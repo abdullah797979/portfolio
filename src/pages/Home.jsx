@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronRight, Download, Briefcase, User, Mail, Code, Server, Palette, Database, ExternalLink, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   const [setMousePosition] = useState({ x: 0, y: 0 });
@@ -214,8 +215,7 @@ const HomePage = () => {
               marginBottom: '3rem',
               justifyContent: isMobile ? 'center' : 'flex-start'
             }}>
-              <a 
-  href="/projects" 
+              <Link to ="/projects" 
   style={{ textDecoration: "none", display: "inline-block" }}
 >
   <button
@@ -249,17 +249,17 @@ const HomePage = () => {
     View My Work
     <ChevronRight size={20} />
   </button>
-</a>
+</Link>
 
-              <a 
-  href="/CV.pdf" 
-  download 
-  style={{ textDecoration: 'none' }} // removes underline
->
-  <button
-    style={{
-      padding: '0.875rem 2rem',
-      borderRadius: '8px',
+              <Link
+                to="/CV.pdf"
+                download
+                style={{ textDecoration: 'none' }} // removes underline
+              >
+                <button
+                  style={{
+                    padding: '0.875rem 2rem',
+                    borderRadius: '8px',
       border: '1px solid rgba(255, 255, 255, 0.1)',
       fontSize: '1rem',
       fontWeight: 600,
@@ -285,7 +285,7 @@ const HomePage = () => {
     Download CV
     <Download size={20} />
   </button>
-</a>
+</Link>
 
             </div>
             
@@ -469,7 +469,7 @@ const HomePage = () => {
               }}>
                 Learn more about my journey, skills, and what drives me as a developer.
               </p>
-              <a href="/about" className="card-content" style={{ // Added card-content class
+              <Link to="/about" className="card-content" style={{ // Added card-content class
                 display: 'flex',
                 alignItems: 'center',
                 color: '#4f46e5',
@@ -479,7 +479,7 @@ const HomePage = () => {
               }}>
                 Discover more
                 <ArrowRight size={16} style={{ marginLeft: '0.5rem' }} />
-              </a>
+              </Link>
             </div>
             
             {/* My Projects Card */}
@@ -528,7 +528,7 @@ const HomePage = () => {
               }}>
                 Explore my portfolio of web applications and digital solutions.
               </p>
-              <a href="/projects" className="card-content" style={{ // Added card-content class
+              <Link to="/projects" className="card-content" style={{ // Added card-content class
                 display: 'flex',
                 alignItems: 'center',
                 color: '#4f46e5',
@@ -538,7 +538,7 @@ const HomePage = () => {
               }}>
                 View all projects
                 <ArrowRight size={16} style={{ marginLeft: '0.5rem' }} />
-              </a>
+              </Link>
             </div>
             
             {/* Contact Me Card */}
@@ -587,7 +587,7 @@ const HomePage = () => {
               }}>
                 Ready to start a project? Get in touch and let's discuss your ideas.
               </p>
-              <a href="/contact" className="card-content" style={{ // A
+              <Link to="/contact" className="card-content" style={{ // A
                 display: 'flex',
                 alignItems: 'center',
                 color: '#4f46e5',
@@ -597,7 +597,7 @@ const HomePage = () => {
               }}>
                 Get in touch
                 <ArrowRight size={16} style={{ marginLeft: '0.5rem' }} />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -628,8 +628,8 @@ const HomePage = () => {
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent'
             }}>Featured Projects</h2>
-            
-            <a href="/projects" style={{
+
+            <Link to="/projects" style={{
               display: 'flex',
               alignItems: 'center',
               color: '#4f46e5',
@@ -638,7 +638,7 @@ const HomePage = () => {
             }}>
               View all projects
               <ArrowRight size={20} style={{ marginLeft: '0.5rem' }} />
-            </a>
+            </Link>
           </div>
           
           <div ref={projectsRef} style={{
@@ -695,8 +695,8 @@ const HomePage = () => {
                     }}>{tag}</span>
                   ))}
                 </div>
-                
-                <a href="/projects" style={{
+
+                <Link to="/projects" style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   color: '#4f46e5',
@@ -705,7 +705,7 @@ const HomePage = () => {
                 }}>
                   View project
                   <ExternalLink size={16} style={{ marginLeft: '0.5rem' }} />
-                </a>
+                </Link>
               </div>
             ))}
             
@@ -759,8 +759,8 @@ const HomePage = () => {
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent'
             }}>My Services</h2>
-            
-            <a href="/services" style={{
+
+            <Link to="/services" style={{
               display: 'flex',
               alignItems: 'center',
               color: '#4f46e5',
@@ -781,7 +781,7 @@ const HomePage = () => {
             }}>
               See All Services
               <ArrowRight size={16} style={{ marginLeft: '0.5rem' }} />
-            </a>
+            </Link>
           </div>
           
           <div style={{
@@ -915,7 +915,7 @@ const HomePage = () => {
             I'm currently available for freelance work and full-time opportunities. 
             If you have a project that you want to get started or think you need my help with something, then get in touch.
           </p>
-          <a href='/contact'>
+          <Link to='/contact'>
           <button style={{
             padding: '0.875rem 2rem',
             borderRadius: '8px',
@@ -947,7 +947,7 @@ const HomePage = () => {
             Get In Touch
             <Mail size={20} />
           </button>
-          </a>
+          </Link>
         </div>
       </section>
       
