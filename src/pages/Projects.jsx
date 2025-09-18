@@ -120,8 +120,8 @@ const ProjectsPage = () => {
   ],
   technologies: ["React", "TailwindCSS", "Framer Motion", "Three.js"],
   category: "web",
-  liveUrl: "#",
-  githubUrl: "#",
+  liveUrl: "https://abdullahjs.dev/",
+  githubUrl: "https://github.com/abdullah797979/portfolio/",
   features: [
     "Fully responsive design",
     "Advanced 3D animations",
