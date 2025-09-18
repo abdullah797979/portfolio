@@ -1,0 +1,71 @@
+name: Build and publish production branch
+
+# Trigger only on changes to main (prevent loops from production pushes)
+on:
+  push:
+    branches:
+      - main
+
+# Allow repo write so the workflow can push production branch
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Prepare production branch and push build
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: |
+          # Fail fast if no build artifacts
+          if [ -d build ]; then BUILD_DIR=build; elif [ -d dist ]; then BUILD_DIR=dist; else
+            echo "Error: No build output found (no build/ or dist/). Exiting."
+            exit 1
+          fi
+
+          # Configure Git user (commit as GitHub Actions bot)
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Check if remote production branch exists
+          if git ls-remote --exit-code --heads origin production; then
+            git fetch origin production
+            git checkout production
+          else
+            git checkout --orphan production
+          fi
+
+          # Remove existing files but keep .git
+          git rm -rf .
+
+          # Copy build output into branch root
+          cp -R "${BUILD_DIR}/." .
+
+          # Optional: add a marker to avoid static-site processors
+          touch .nojekyll
+
+          # Commit & push to production branch (force to keep branch in sync)
+          git add -A
+          git commit -m "chore: deploy production build from $GITHUB_SHA [ci skip]" || echo "No changes to commit"
+          git push --force origin HEAD:production
