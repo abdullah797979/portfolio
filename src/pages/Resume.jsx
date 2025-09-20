@@ -132,10 +132,10 @@ const ResumePage = () => {
                   headingHighlight="Intermediate"
                 >
                   <div className="neu-card-row">
-                    <span className="neu-text-animate">Punjab College, Gujranwala</span>
+                    <span className="neu-text-animate">Govt Degree College Qila Didar Singh, Gujranwala</span>
                     <span className="neu-text-animate neu-card-date"><Calendar size={16} />2019 - 2021</span>
                   </div>
-                  <div className="neu-text-animate neu-card-detail">Grade: A | 908/1100</div>
+                  <div className="neu-text-animate neu-card-detail">Grade: B | 681/1100</div>
                   <div className="neu-text-animate neu-card-detail" style={{ fontSize: '0.96rem', color: '#d1d5db' }}>
                     Major Subjects: Computer Science, Mathematics, Physics
                   </div>
@@ -148,10 +148,10 @@ const ResumePage = () => {
                   headingHighlight="Matriculation"
                 >
                   <div className="neu-card-row">
-                    <span className="neu-text-animate">Govt. High School, Gujranwala</span>
+                    <span className="neu-text-animate">Heaven Public School Qila Didar Singh, Gujranwala</span>
                     <span className="neu-text-animate neu-card-date"><Calendar size={16} />2017 - 2019</span>
                   </div>
-                  <div className="neu-text-animate neu-card-detail">Grade: A+ | 1012/1100</div>
+                  <div className="neu-text-animate neu-card-detail">Grade: A | 813/1100</div>
                   <div className="neu-text-animate neu-card-detail" style={{ fontSize: '0.96rem', color: '#d1d5db' }}>
                     Major Subjects: Computer Science, Mathematics, Physics, Chemistry, Biology
                   </div>
